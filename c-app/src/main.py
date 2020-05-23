@@ -14,11 +14,11 @@ def example_function():
         file = f"{getcwd()}/swap.c"
         output = f"{getcwd()}/swap"
 
-        if not path.exists(file):
-            run(["clang", file, "-o", output])
-
-        print(f"Parg1: ${arg1},  Parg1: ${arg2}")
-
-        run([output, f"{arg1}", f"{arg2}"])
-
-        print(f"Second print Python arg1: ${arg1}, Python arg1: ${arg2}")
+        # if not path.exists(file):
+        #     run(["clang", file, "-o", output])
+        #
+        # print(f"Parg1: ${arg1},  Parg1: ${arg2}")
+        #
+        # run([output, f"{arg1}", f"{arg2}"])
+        #
+        # print(f"Second print Python arg1: ${arg1}, Python arg1: ${arg2}")

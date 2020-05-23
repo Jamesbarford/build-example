@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 from src.main import example_function
 
 app = Flask(__name__)
@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route('/')
 def hello_world():
     example_function()
-    return "Hello, World!"
+    return jsonify("Hello, World!", 200)
 
 
 if __name__ == '__main__':
