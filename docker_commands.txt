@@ -1,0 +1,17 @@
+Docker file
+```
+FROM ubuntu:18.04
+
+RUN apt-get update
+```
+
+// wher Dockerfile is run: 
+docker build -t <name_of_image> .
+
+docker run -it --name <imamge_name> <image_id> /bin/bash // -> build, go into interactive, call the container jeff and run bash
+docker start -i <image_name> // -> start in interactive mode
+
+// call exit in ubuntu to leave
+
+// go into running container and execute command bash
+docker exec -it <image_name> bash
