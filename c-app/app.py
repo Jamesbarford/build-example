@@ -4,10 +4,12 @@ from src.main import example_function
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/api')
 def hello_world():
     example_function()
-    return jsonify("Hello, World!", 200)
+    return {
+        "body": "Message from flask"
+    }
 
 
 if __name__ == '__main__':

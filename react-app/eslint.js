@@ -1,6 +1,7 @@
 module.exports = {
     parser: "@typescript-eslint/parser",
     parserOptions: {
+        project: path.resolve(__dirname, "./tsconfig.json"),
         ecmaVersion: 2020,
         sourceType: "module",
         ecmaFeatures: {
@@ -24,5 +25,5 @@ module.exports = {
         "@typescript-eslint/no-explicit-any": "on",
         "@typescript-eslint/no-for-in-array": "on",
         "@typescript-eslint/no-namespace": "on"
-    },
+    }
 };

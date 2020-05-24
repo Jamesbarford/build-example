@@ -1,27 +1,36 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { FetchStatus, withMakeGetRequest } from "./useExampleGetRequest";
 
+interface AppProps {
+    fetchStatus: FetchStatus;
+    exampleResponse: null | any;
+    makeExampleRequest(): Promise<void>;
+}
 
-class App extends React.Component {
-    public componentDidMount(): void {
-        fetch("http://localhost:5000", {
-            headers: {
-                Accept: "application/json"
-            }
-        }).then(t => {
-            try {
-                console.log(t.json())
-            } catch (e) {
-                console.warn(JSON.stringify(e));
-            }
-        });
+class App extends React.Component<AppProps> {
+    public async componentDidMount(): Promise<void> {
+        await this.props.makeExampleRequest();
     }
 
     public render(): JSX.Element {
-        return (
-            <div>hello</div>
-        );
+        switch (this.props.fetchStatus) {
+            case FetchStatus.SUCCESS:
+                return <span>{this.props.exampleResponse.body}</span>;
+
+            case FetchStatus.ERROR:
+                return (
+                    <span>
+                        Failed to make example request: {JSON.stringify(this.props.exampleResponse)}
+                    </span>
+                );
+
+            default:
+                return <span>Loading...</span>;
+        }
     }
 }
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const AppWithReq = withMakeGetRequest(App);
+
+ReactDOM.render(<AppWithReq />, document.getElementById("root"));
